@@ -75,8 +75,6 @@ function get_products_by_category($category) {
     $stmt->close();
     return $result;
 }
-
-
 function delete_product($product_id): bool {
     $db = new DBcontrol();
     $sql = "DELETE FROM products WHERE product_id = ?";
@@ -85,4 +83,25 @@ function delete_product($product_id): bool {
     $result = $stmt->execute();
     $stmt->close();
     return $result;
+}
+
+function get_inactive_products() {
+    $db = new DBcontrol();
+    $sql = "SELECT * FROM products WHERE active = 0";
+    $result = $db->query($sql);
+    return $result->num_rows;
+}
+function get_active_products() {
+    $db = new DBcontrol();
+    $sql = "SELECT * FROM products WHERE active = 1";
+    $result = $db->query($sql);
+    return $result->num_rows;
+}
+
+function get_product_count() {
+    $db = new DBcontrol();
+    $sql = "SELECT COUNT(*) as count FROM products";
+    $result = $db->query($sql);
+    $row = $result->fetch_assoc();
+    return $row['count'];
 }

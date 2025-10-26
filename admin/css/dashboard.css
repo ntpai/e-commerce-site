@@ -20,13 +20,6 @@
   'opsz' 24
 }
 
-.funnel-sans {
-  font-family: "Funnel Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
 /*Desgins*/
 *,
 *::before,
@@ -38,7 +31,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: 'Funnel Sans';
+    font-family: 'Arvo', serif;
     background-color: hsl(0, 0%, 87%);
 }
 nav{
@@ -62,7 +55,7 @@ nav h2 {
     letter-spacing: 0.5px;
 }
 .nav-links a {
-    color: var(--800);
+    color: black;
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 5px;
@@ -88,54 +81,39 @@ nav h2 {
     color: var(--300);
 }
 
-#home{
+#cards {
     display: flex;
+    justify-content: space-between;
+    margin: 20px 50px 0 50px;
 }
-.products-container{
-    width: 55%;
-    height: 50vh;
-    margin-left: 40px;
-    background-color: var(--200);
-    border-radius: 16px;
-    margin-top: 100px;
-    display: flex;
 
-}
-.products-container h2{
-    margin-top: 20px;
-    margin-left: 20px;
-    padding: 10px;
-}
-.display-details{
+.inventory-card{
+    background-color: var(--50);
+    margin: 30px 0  0 30px; 
     width: 30%;
-    height: 50vh;
-    margin-top: 100px;
-    margin-left: 90px;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+    padding: 1rem;
+    border-radius: 10px;
 }
-
-.display-details .display-revenue,
-.display-details .display-orders{
-    width: 100%;
-    height: 45%;
-    background-color: var(--200);   
-    border: none;
-    border-radius: 16px;
-
+.inventory-card * {
+    margin-bottom: 1rem;
 }
-.display-revenue h3, 
-.display-orders h3{
-    color: var(--950);
-    letter-spacing: 0.5px;
-    margin-left: 20px;
-    margin-top: 20px;
-    padding: 10px;
-} 
-
-.display-details .display-revenue span p {
-    margin-left: 30px;
-    margin-top: 20px;
-    font-size: 2rem;
-}   
+.orders-card{
+    background-color: var(--50);
+    margin: 30px 0  0 30px; 
+    width: 30%;
+    padding: 1rem;
+    border-radius: 10px;
+}
+.orders-card * {
+    margin-bottom: 1rem;
+}
+.users-card{
+    background-color: var(--50);
+    margin: 30px 0  0 30px; 
+    width: 30%;
+    padding: 1rem;
+    border-radius: 10px;
+}
+.users-card * { 
+    margin-bottom: 1rem;
+}

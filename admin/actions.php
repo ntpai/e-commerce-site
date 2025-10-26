@@ -1,19 +1,19 @@
 <?php
 
-$product_obj = require_once '../app/Product.php';
+header('Content-Type: application/json');
 
-// Placeholder for future action handling (edit/delete)
+require_once '../app/Product.php';
 
-header('Location: products.php?action=delete&status=failed');
+$product_count = get_product_count();
+$active_products = get_active_products();
+$inactive_products = get_inactive_products(); 
+
+$response = [
+    "status" => "success",
+    "total_products" => $product_count,
+    "active_products" => $active_products,
+    "inactive_products" => $inactive_products,
+];
+
+echo json_encode($response);
 exit;
-
-/*if(isset($_GET['id'])) {
-    $product_id = $_GET['id'];
-    $product_data = get_product_by_id($product_id);
-    if(!$product_data) {
-        header('Location: products.php?action=delete&status=success');
-        exit;
-    }
-} else {
-    echo "No product ID specified.";
-}*/
