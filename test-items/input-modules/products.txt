@@ -1,0 +1,23 @@
+Category: Input & Control Modules
+
+--1
+Name: Joystick Module
+Description:
+The Joystick Module offers a versatile and intuitive input solution for a wide range of electronic projects. Designed for smooth, two-axis control (X and Y), it emulates the functionality of analog joysticks found in game controllers, providing precise directional input.
+
+Price: rs. 70
+
+--2
+Name: IR Remote and Receiver Kit
+Description:
+The Infrared Remote (IR) and receiver kit provides a simple, affordable solution for adding wireless control to your electronic projects. Perfect for hobbyists, students, and engineers, this plug-and-play kit is compatible with popular microcontrollers like Arduino, Raspberry Pi, and ESP boards.
+
+Price: rs. 70
+
+--3
+Name: OV7670 Camera Module (Arduino/STM)
+
+Description:
+The OV7670 camera module is a low-cost, 0.3-megapixel (640x480) VGA CMOS camera with a Digital Signal Processor (DSP) that can be controlled via a Serial Camera Control Bus (SCCB) interface. It is commonly used in embedded and Arduino projects for its ability to capture both images and video at up to 30 frames per second (fps). The module offers various image processing functions, such as white balance, color saturation, and gamma control, which can be programmed to suit different applications. 
+
+Price: rs 250

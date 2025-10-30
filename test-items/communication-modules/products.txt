@@ -1,0 +1,29 @@
+Category: Communication Modules
+--1
+Name: HC-05 Bluetooth Module (Arduino, STM32)
+Description:
+The HC-05 Bluetooth Module is a popular choice for adding Bluetooth functionality to Arduino and STM32 projects. It is a low-cost, easy-to-use module that supports both master and slave modes.
+
+Price: rs. 299
+
+--2
+Name: ESP8266 Wi-Fi Module
+
+Description:
+The ESP8266 Wi-Fi Module is a popular choice for adding Wi-Fi functionality to Arduino and STM32 projects. It is a low-cost, easy-to-use module that supports both master and slave modes.
+
+Price: rs. 399
+
+--3
+Name: 433MHz RF Transmitter/Receiver Module
+Description:
+A basic 433MHz RF transmitter/receiver module is a  versatile wireless solution, commonly used for one-way data communication over short to medium distances. The combination of a transmitter and receiver module allows for simple radio frequency control, often found in applications like remote control toys, simple home automation, and wireless alarms. 
+
+Price: rs. 240
+
+--4
+Name: GPS Module (NEO-6M)
+Description:
+A low-cost and popular choice for beginners and hobbyists working on projects with Arduino, Raspberry Pi, and drones. 
+
+Price: rs. 240

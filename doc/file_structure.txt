@@ -6,7 +6,7 @@
         -> .html files ()
     include/ 
         ->php files for server-side
-    user/
+    client/
         -> css (stylesheets)
         -> js(javascript)
         -> php (php client-side code)

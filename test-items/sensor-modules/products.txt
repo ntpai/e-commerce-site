@@ -1,0 +1,14 @@
+Category: Sensor Modules
+
+--1
+Name: IR Sensor Module
+Description:
+IR sensor is a device that uses infrared technology to detect objects or changes in the environment. IR sensors can detect a wide range of physical properties such as temperature, motion, and proximity. 
+
+Price: rs. 100
+--2
+Name: Soil Moisture Sensor
+Description:
+The soil moisture sensor is one kind of sensor used to gauge the volumetric content of water within the soil. As the straight gravimetric dimension of soil moisture needs eliminating, drying, as well as sample weighting. These sensors measure the volumetric water content not directly with the help of some other rules of soil like dielectric constant, electrical resistance, otherwise interaction with neutrons, and replacement of the moisture content.
+
+Price: rs 129

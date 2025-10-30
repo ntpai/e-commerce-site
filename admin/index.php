@@ -1,12 +1,16 @@
 <!-- dashboard.php -->
+<?php
+session_start();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href="css/dashboard.css?v=15" rel="stylesheet"/>
+        <link href="css/dashboard.css?" rel="stylesheet"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
         <title>Admin Dashboard</title>
@@ -22,24 +26,8 @@
                 <a href="users.php">Users</a>
             </div>
         </nav>
-        <script src="js/dashboard.js">
-            getDashboardData();
-        </script>   
-        <div id="cards">
-            <div class="inventory-card">
-                <h2>Inventory Overview</h2>
-                <h3 id="count"></h3>
-                <h3 id="active-count"></h3>
-                <h3 id="inactive-count"></h3>
-            </div>
-            <div class="orders-card">
-                <h2>Orders Overview</h2>
-                <h3 id="pending"></h3>
-                <h3 id="completed"></h3>
-            </div>
-            <div class="users-card">
-                <h2>Total users</h2>
-            </div>
+        <div class="overview">
         </div>
     </body>
+        <script src="js/dashboard.js"></script>   
 </html>

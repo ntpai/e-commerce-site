@@ -81,39 +81,10 @@ nav h2 {
     color: var(--300);
 }
 
-#cards {
-    display: flex;
-    justify-content: space-between;
+.overview {
+    display: block;
+    width: 80%;
+    background-color: var(--50);
     margin: 20px 50px 0 50px;
 }
 
-.inventory-card{
-    background-color: var(--50);
-    margin: 30px 0  0 30px; 
-    width: 30%;
-    padding: 1rem;
-    border-radius: 10px;
-}
-.inventory-card * {
-    margin-bottom: 1rem;
-}
-.orders-card{
-    background-color: var(--50);
-    margin: 30px 0  0 30px; 
-    width: 30%;
-    padding: 1rem;
-    border-radius: 10px;
-}
-.orders-card * {
-    margin-bottom: 1rem;
-}
-.users-card{
-    background-color: var(--50);
-    margin: 30px 0  0 30px; 
-    width: 30%;
-    padding: 1rem;
-    border-radius: 10px;
-}
-.users-card * { 
-    margin-bottom: 1rem;
-}

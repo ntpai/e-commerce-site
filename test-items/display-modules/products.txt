@@ -1,0 +1,22 @@
+Category: Display Modules
+--1
+
+Name: 16x2 LCD with I2C Adapter
+Description:
+LCD1602 Parallel LCD Display with IIC/I2C interfaceA 16x2 LCD with an I2C adapter is a character display that shows up to 16 characters on each of two lines, simplifying connection to microcontrollers like Arduino by using an I2C serial interface instead of the standard parallel interface. This adapter uses a PCF8574 I/O expander chip and allows the display to be controlled with just two data pins (SDA and SCL).
+
+Price: rs 160
+
+--2
+Name: LED Dot Matrix 8x8
+Description: 
+An 8x8 LED dot matrix is a 64-LED display arranged in an 8-row by 8-column grid, where each LED can be individually controlled to create characters, symbols, and simple graphics. A low-cost, versatile component for electronic projects and is often controlled via multiplexing, which requires fewer pins than controlling each LED independently.
+
+Price: rs. 250 
+
+--3
+Name: Nextion NX4832T035 Display
+Description:
+Nextion NX4832T035-3.5″ HMI TFT LCD Touch Display Module is a seamless Human Machine Interface (HMI) solution that provides a control and visualization interface between a human and a process, machine, application, or appliance. Nextion is mainly applied to the Internet of Things (IoT) or consumer electronics field. It is the best solution to replace the traditional LCD and LED Nixie tubes.
+
+Price : rs. 2999

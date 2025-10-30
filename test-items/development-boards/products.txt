@@ -1,0 +1,71 @@
+Category: Development-boards
+
+--1
+Name: Arduino Uno R3
+
+Description:
+Arduino UNO is a microcontroller board based on the ATmega328P. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz ceramic resonator, a USB connection, a power jack, an ICSP header and a reset button. It contains everything needed to support the microcontroller; simply connect it to a computer with a USB cable or power it with a AC-to-DC adapter or battery to get started.
+
+-- 2
+Name: Arduino Nano 33
+
+Description:
+The Arduino Nano 33 is a line of small, powerful boards with wireless connectivity, featuring models like the Nano 33 BLE and Nano 33 IoT. These boards run on a 3.3V system and are built on robust processors like the ARM Cortex-M4F (BLE) or Cortex-M0 (IoT). Key features include Wi-Fi and Bluetooth (BLE) connectivity, a 9-axis inertial measurement unit (IMU) in some versions, and a security chip for IoT applications.
+
+--3
+Name: Arduino Mega 2560
+
+Description:
+The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has 54 digital input/output pins (of which 15 can be used as PWM outputs), 16 analog inputs, 4 UARTs (hardware serial ports), a 16 MHz crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button.
+
+--4
+Name: Arduino Leonardo
+
+Description:
+The Leonardo differs from all preceding boards in that the ATmega32u4 has built-in USB communication, eliminating the need for a secondary processor. This allows the Leonardo to appear to a connected computer as a mouse and keyboard, in addition to a virtual (CDC) serial / COM port.
+
+Price: rs. 999
+
+--5
+Name: Raspberry Pi 4 Model B
+Description:
+The Raspberry Pi 4 Model B is a credit-card-sized single-board computer that offers desktop-level performance for projects and general use, featuring a 1.5GHz quad-core 64-bit processor and options for 1, 2, 4, or 8GB of RAM. Key features include dual 4K display support via two micro-HDMI ports, Gigabit Ethernet, dual-band Wi-Fi, Bluetooth 5.0, and a 40-pin GPIO header for hardware projects. It has two USB 3.0 and two USB 2.0 ports and is powered by a 5V/3A USB-C connector. 
+
+Price: rs. 3999
+
+--6
+Name: Raspberry Pi Pico (RP2040)
+Description:
+The Raspberry Pi Pico is a microcontroller board based on the RP2040 microcontroller. It has 26 digital input/output pins (of which 22 can be used as PWM outputs), 26 analog inputs, 4 UARTs (hardware serial ports), a 12 MHz crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button.
+
+Price: rs. 999
+
+--7
+Name: ESP8266 NodeMCU
+Description:
+The ESP8266 NodeMCU is a microcontroller board based on the ESP8266 microcontroller. It has 10 digital input/output pins (of which 8 can be used as PWM outputs), 1 analog input, 1 UART (hardware serial port), a 24 MHz crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button.
+
+Price: rs. 999
+
+--8
+Name: ESP32-CAM (with camera module)
+Description:
+The ESP32-CAM is a microcontroller board based on the ESP32 microcontroller. It has 16 digital input/output pins (of which 14 can be used as PWM outputs), 1 analog input, 2 UARTs (hardware serial ports), a 40 MHz crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button. It also has a built-in camera module.
+
+Price: rs. 999
+
+--9
+Name: STM32F103C8T6
+
+Description:
+The STMicroelectronics STM32F103C8T6 is a 32-bit ARM Cortex-M3 microcontroller, often found on the popular low-cost "Blue Pill" development board. It is well-known for its balance of performance and affordability, making it popular for hobbyist projects and educational use. 
+
+Price: rs. 499
+
+--10
+Name: STM32 NUCLEO-F401RE
+
+Description:
+The STM32 Nucleo-F401RE is a popular development board based on the STM32F401RE microcontroller. It is designed to be a low-cost platform for prototyping and learning embedded systems. The board features a variety of interfaces and connectors, making it versatile for various projects.
+
+Price: rs. 1299
