@@ -7,11 +7,12 @@ function add_product($name, $category, $description, $price, $stock): bool {
     $sql = "INSERT INTO products (name, category, description, price, stock) VALUES (?, ?, ?, ?, ?)";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("sssdi", $name, $category, $description, $price, $stock);
-    if($stmt->execute()) {
-        return $stmt->insert_id;
+    if(!$stmt){
+        return false;   
     }
+    $stmt->execute();
     $stmt->close();
-    return false;
+    return true;
 }
 
 function get_product_id($product_name) {
@@ -28,12 +29,14 @@ function get_product_id($product_name) {
     return false;
 } 
 
-function get_product_by_id(int $product_id) {
+function get_product_by_id(string $product_name) {
     $db = new DBcontrol();
-    $sql = "SELECT * FROM products WHERE product_id = ?";
+    $sql = "SELECT * FROM products WHERE product_name = ?";
     $stmt = $db->prepare($sql);
-    $stmt->bind_param("i", $product_id);
-    $stmt->execute();
+    $stmt->bind_param("s", $product_name);
+    if(!$stmt) {
+        return false;
+    }
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
     $stmt->close();

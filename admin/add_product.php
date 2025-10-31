@@ -14,27 +14,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $category= $_POST['category'];
     $description= $_POST['description'];
     $price= $_POST['price'];
-    $stock= $_POST['stock'];
-    if($name && $category && $description && $price && $stock && $image_data) {
-        $product = add_product($name, $category, $description, $price, $stock);
-        $product_id = get_product_id($name);
-        if($product) {
-            $image_id = add_image($name, $product_id, $image_type, $image_data);
-            if($image_id) {
-                $message = "Product added successfully.";
-                $success = true;
-            } else {
-                $message = "Failed to upload image.";
-                delete_product($product_id); // Rollback product addition if image upload fails
-            }
-        } else {
-            $message = "Failed to add product.";
-        }
-    } else {
-        $message = "All fields are required.";
+    $stock= $_POST['stock']; 
+    if(!$name || !$category || !$description || !$price || !$stock || !$image_data) 
+    {
+        error_log("All fields are required.");
+        exit;
     }
-}
+    $product = add_product($name, $category, $description, $price, $stock); 
+    $product_id = get_product_id($name);
+    if(!$product_id) {
+        error_log("Failed to add product.");
+        exit;
+    }
+    $image_id = add_image($name, $product_id, $image_type, $image_data);
+    if(!$image_id) {
+        error_log("Failed to upload image.");
+        delete_product($product_id); // Rollback product addition if image upload fails
+    }
+    $message = "Product added successfully.";
+    $success = true;
 
+}
 if($success) {
     header('refresh: 1; url=products.php');
 }
@@ -85,7 +85,6 @@ if($success) {
             padding: 0.5rem;
         }
     </style>
-    <script></script>
 </head>
 <body>
     <nav>

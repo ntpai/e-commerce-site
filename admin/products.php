@@ -48,13 +48,13 @@ function list_products(int $counter, $product_list ) {
             <span><p>&#8377;'.$products_list[$i]['price'].'</p></span>
             <span><p>'.$products_list[$i]['created_at'].'</p></span>
             <span>
-                <button><a href="actions.php?id='.$product_list[$i]['id'].'">Edit / Delete</a></button>
+                <button><a 
+                href="actions.php?action=modify&id='.$product_list[$i]['id'].'">Modify</a></button>
             </span>
         
         </div>';
     }
 }   
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,6 +71,9 @@ function list_products(int $counter, $product_list ) {
                 padding: 0;
                 box-sizing: border-box;
                 color: black;
+            }
+            a {
+                text-decoration: none;
             }
             body{
                 font-family: 'Funnel Sans';
@@ -206,7 +209,7 @@ function list_products(int $counter, $product_list ) {
     <body>
         <nav>
             <div>
-                <h1>RETAILO</h1>
+                <h1><a href="index.php">RETAILO</a></h1>
             </div>
             <div>
                 <h3>Products Panel</h3>
