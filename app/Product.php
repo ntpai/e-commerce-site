@@ -29,18 +29,11 @@ function get_product_id($product_name) {
     return false;
 } 
 
-function get_product_by_id(string $product_name) {
+function get_product_by_id(int $product_id) {
     $db = new DBcontrol();
-    $sql = "SELECT * FROM products WHERE product_name = ?";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param("s", $product_name);
-    if(!$stmt) {
-        return false;
-    }
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $stmt->close();
-    return $row ?: false;
+    $sql = "SELECT * FROM products WHERE id = '$product_id'";
+    $result = $db->query($sql);
+    return $result->fetch_assoc();
 }
 
 function get_products_by_sales() {
@@ -88,6 +81,57 @@ function delete_product($product_id): bool {
     return $result;
 }
 
+// Updating products
+
+function update_product_name(string $product_name, int $product_id) {
+    $db = new DBcontrol();
+    $sql = "UPDATE products SET name = ? WHERE id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("si", $product_name, $product_id);
+    $result = $stmt->execute();
+    return $result;
+}
+
+function update_stock(int $stock, int $product_id) {
+    $db = new DBcontrol();
+    $sql = "UPDATE products SET stock = ? WHERE id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("ii", $stock, $product_id);
+    return $stmt->execute();
+}
+
+function update_price(int $price, int $product_id) {
+    $db = new DBcontrol();
+    $sql = "UPDATE products SET price = ? WHERE id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("ii", $price, $product_id);
+    return $stmt->execute();
+}
+
+function update_category(string $category, int $product_id) {
+    $db = new DBcontrol();
+    $sql = "UPDATE products SET category = ? WHERE id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("si", $category, $product_id);
+    return $stmt->execute();
+}
+
+function update_status(string $status, int $product_id) {
+    $db = new DBcontrol();
+    $sql = "UPDATE products SET status = ? WHERE id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("si", $status, $product_id);
+    return $stmt->execute();
+}
+
+function update_description(string $description, int $product_id) {
+    $db = new DBcontrol();
+    $sql = "UPDATE products SET description = ? WHERE id = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("si", $description, $product_id);
+    return $stmt->execute();
+}
+// for dashboard overview
 function get_inactive_products() {
     $db = new DBcontrol();
     $sql = "SELECT * FROM products WHERE active = 0";

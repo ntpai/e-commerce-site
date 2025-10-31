@@ -14,6 +14,11 @@ if(isset($_GET['action']) && isset($_GET['status'])) {
         $delete_message = "Product deleted successfully.";
     } else if($action === 'delete' && $status === 'failed') {
         $delete_message = "Failed to delete product. Try again.";
+    } else if($action == 'modify' && $status == 'success') {
+        $delete_status = true;
+        $delete_message = "Product modified successfully.";
+    } else if($action == 'modify' && $status == 'failed') {
+        $delete_message = "Failed to modify product. Try again.";
     }
 }
 
@@ -49,7 +54,7 @@ function list_products(int $counter, $product_list ) {
             <span><p>'.$products_list[$i]['created_at'].'</p></span>
             <span>
                 <button><a 
-                href="actions.php?action=modify&id='.$product_list[$i]['id'].'">Modify</a></button>
+                href="modify.php?id='.$product_list[$i]['id'].'">Modify</a></button>
             </span>
         
         </div>';
