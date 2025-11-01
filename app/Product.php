@@ -73,12 +73,8 @@ function get_products_by_category($category) {
 }
 function delete_product($product_id): bool {
     $db = new DBcontrol();
-    $sql = "DELETE FROM products WHERE product_id = ?";
-    $stmt = $db->prepare($sql);
-    $stmt->bind_param("i", $product_id);
-    $result = $stmt->execute();
-    $stmt->close();
-    return $result;
+    $sql = "DELETE FROM products WHERE id = '$product_id'";
+    return $db->query($sql);
 }
 
 // Updating products

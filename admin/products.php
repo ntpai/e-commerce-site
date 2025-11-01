@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../app/Product.php';
 
 $message  = "";
@@ -39,7 +39,7 @@ if($products->num_rows > 0) {
     }
 } else {
     $counter = 0;
-    $message = "No products found. Fetch error?";
+    $message = "No products found";
 }
 $counter = $i;
 function list_products(int $counter, $product_list ) {
@@ -167,14 +167,13 @@ function list_products(int $counter, $product_list ) {
                 width: 100%;
                 height: fit-content;
                 margin-top: 1rem;
-                border: 1px solid var(--800);
                 border-radius: 8px;
             }
             .list-header, .product-row{ 
                 width: 100%;
                 height: 3rem;
                 padding: 1rem  2rem;
-                border-bottom: 1px solid var(--800);    
+                border-bottom: 1px solid hsl(0, 0%, 87%);    
             }
             .product-row:last-child{
                 border-bottom: none;
@@ -247,7 +246,7 @@ function list_products(int $counter, $product_list ) {
                 </div> 
                 <?php
                 if($message) {
-                    echo '<div class="product-row"><span><p>'.$message.'</p></span></div>';
+                    echo '<div class="product-row"><p>'.$message.'</p></div>';
                 } else {
                     list_products($counter,$products_list);
                 }

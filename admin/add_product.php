@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $message = "";
 require_once '../app/Product.php';

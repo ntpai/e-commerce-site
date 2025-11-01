@@ -1,43 +1,64 @@
 <?php
+session_start();
 require_once "../app/Product.php";
+
 $updation_status = false;
 
-$id = null;
-
-if(isset($_POST['update'])) {
+if (isset($_POST['update'])) {
     $id = intval($_POST['id']);
-    $name = $_POST['name'] ?? null;
-    $category = $_POST['category'] ?? null;    
-    $description = $_POST['description'] ?? null;
-    $stock = isset($_POST['stock']) ? intval($_POST['stock']) : null;
-    $price = isset($_POST['price']) ? intval($_POST['price']) : null;
-    $status = $_POST['status'] ?? null;
+    $name = isset($_POST['name']) ? trim($_POST['name']) : null;
+    $category = isset($_POST['category']) ? trim($_POST['category']) : null;
+    $description = isset($_POST['description']) ? trim($_POST['description']) : null;
+    $stock = isset($_POST['stock']) && $_POST['stock'] !== '' ? intval($_POST['stock']) : null;
+    $price = isset($_POST['price']) && $_POST['price'] !== '' ? intval($_POST['price']) : null;
+    $status = isset($_POST['status']) ? trim($_POST['status']) : null;
 
     error_log("Updating product ID: $id");
 
-    if ($name !== null) {
-        update_product_name($name, $id);
-        $updation_status = true;
-    }   
-    if ($category !== null) {
-        update_category($category, $id);
-        $updation_status = true;
+    $attempted = 0;
+    $successes = 0;
+
+    if ($name !== null && $name !== '') {
+        $attempted++;
+        if (update_product_name($name, $id)) $successes++;
     }
-    if ($description !== null) {
-        update_description($description, $id);
-        $updation_status = true;
+
+    if ($category !== null && $category !== '') {
+        $attempted++;
+        if (update_category($category, $id)) $successes++;
     }
+
+    if ($description !== null && $description !== '') {
+        $attempted++;
+        if (update_description($description, $id)) $successes++;
+    }
+
     if ($stock !== null) {
-        update_stock($stock, $id);
-        $updation_status = true;
+        $attempted++;
+        if (update_stock($stock, $id)) $successes++;
     }
+
     if ($price !== null) {
-        update_price($price, $id);
-        $updation_status = true;
+        $attempted++;
+        if (update_price($price, $id)) $successes++;
     }
-    if ($status !== null) {
-        update_status($status, $id);
-        $updation_status = true;
+
+    if ($status !== null && $status !== '') {
+        $attempted++;
+        if (update_status($status, $id)) $successes++;
+    }
+
+    // Decide overall updation status
+    if ($attempted === 0) {
+        // Nothing to update
+        $updation_status = false;
+        error_log('No fields provided to update for product ID: ' . $id);
+    } elseif ($successes === $attempted) {
+        $updation_status = true; // all attempted updates succeeded
+    } else {
+        // Partial or full failure
+        $updation_status = false;
+        error_log("Update attempted: $attempted, succeeded: $successes for product ID: $id");
     }
 
 } elseif (isset($_POST['delete'])) {
@@ -48,13 +69,11 @@ if(isset($_POST['update'])) {
 }
 
 if ($updation_status) {
-    global $id;
-    error_log("Product ID: $id updated successfully.");
+    error_log("Product updated successfully.");
     header('Location: products.php?action=modify&status=success');
     exit();
 } else {
-    global $id;
-    error_log("No updates were made for product ID: $id");
+    error_log("No updates were made for product");
     header('Location: products.php?action=modify&status=failed');
     exit();
 }

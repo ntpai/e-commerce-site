@@ -99,13 +99,14 @@ if(isset($_GET['id'])) {
         <div class="modify-container">
             <h2>Modify Product #<?= htmlspecialchars($_GET['id']) ?></h2>
             
-            <form method="POST" action="product_handler.php?>">
+            <form method="post" action="product_handler.php">
                 <label for="id-number">Id</label>
-                <input type="text" name="id-number" value="<?= htmlspecialchars($_GET['id']) ?>" disabled>
+                <input type="hidden" name="id" value="<?= htmlspecialchars($_GET['id']) ?>">
+                <input type="text" id="id-number" value="<?= htmlspecialchars($_GET['id']) ?>" disabled>
                 <label for="name">Name</label>
                 <input type="text" name="name" placeholder=" <?= htmlspecialchars($name)  ?>">
                 <label for="category">Category</label>
-                <input type="text" name="Category" placeholder=" <?= htmlspecialchars($category)?>">
+                <input type="text" name="category" placeholder=" <?= htmlspecialchars($category)?>">
                 <label for="description">Description</label>
                 <textarea name="description" rows="4" cols="41" placeholder="<?= htmlspecialchars($description) ?>"></textarea>
                 <div class="inline-inputs">
@@ -120,8 +121,8 @@ if(isset($_GET['id'])) {
                     </select>
                 </div>
                 <div class="buttons">
-                    <button value="update">Update</button>
-                    <button value="delete">Delete</button>
+                    <button type="submit" name="update" value="1">Update</button>
+                    <button type="submit" name="delete" value="1" onclick="return confirm('Delete this product?');">Delete</button>
                 </div>
             </form>
         </div>
