@@ -43,7 +43,10 @@ body{
 .home:hover img{
     filter: grayscale(0%);
 }
-
+a {
+    text-decoration: none;
+    color: inherit;
+}
 .shop-now{
     width: 100%;
     display: flex;

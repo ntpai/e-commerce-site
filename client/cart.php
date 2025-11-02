@@ -1,23 +1,14 @@
 <?php 
 session_start();
-if(!isset($_SESSION["user_id"])){
-    header('Location : signin.php?ref=cart.php');
+if (!isset($_SESSION["user_id"])) {
+    // Correct header format: 'Location: <url>' (no space before colon)
+    // URL-encode the ref param for safety
+    header('Location: signin.php?ref=' . urlencode('cart.php'));
     exit;
 }
 
 require_once "../app/Cart.php";
 require_once "../app/Product.php";
-
-// Handle quantity update
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update_qty'])) {
-    $product_id = intval($_POST['product_id']);
-    $new_qty = intval($_POST['quantity']);
-    if ($new_qty > 0) {
-        update_item_quantity($_SESSION["user_id"], $product_id, $new_qty);
-    } else {
-        remove_item($_SESSION["user_id"], $product_id);
-    }
-}
 
 // Fetch cart items
 $cartItems = get_cart_items($_SESSION["user_id"]);
@@ -55,23 +46,19 @@ function show_cart_items($cartItems, $productControl) {
 <!DOCTYPE html>
 <html>
     <head>
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Your Cart</title>
         <link  rel="stylesheet" href="css/cart.css?v=<?= time() ?>" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-        <script src="js/process.js"></script>
     </head>
     <body>
         <nav>
-            <div>
-                <h1 ><a style="text-decoration: none; color: black;" href="index.php">RETAILO</a></h1>
-            </div>
-            <div>
-                <h3>Cart</h3>
-            </div>
+            <h1>
+                <a style="text-decoration: none; color: black;" href="index.php">RETAILO</a>
+            </h1>
+            <h3>Cart</h3>
         </nav>
         <div class="cart-container">
             <h1 style="text-align:center;">Your Cart</h1>
@@ -99,16 +86,15 @@ function show_cart_items($cartItems, $productControl) {
                 </div>
                 <div class="summary-row grand-total">
                     <span>Grand total:</span>
-                    <span>&#8377;<?=  number_format($subtotal * 1.10, 2) ?></span>
+                    <span>&#8377;<?=  number_format($subtotal, 2) ?></span>
                 </div>
                 <?php  if ($subtotal > 1000): ?>
                 <div class="free-shipping">
                     <p>Congrats, you're eligible for <b>Free Shipping</b></p>
-                    <span class="material-symbols-outlined">local_shipping</span>
                 </div>
                 <?php endif; ?>
                 <div>
-                    <a href="payment.php"><button onclick="" class="checkout-btn">Check out</button></a>
+                    <button class="checkout-btn"><a href="order.php">Check out</a></button>
                 </div>  
             </div> 
         </div> 

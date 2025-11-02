@@ -26,10 +26,12 @@ $counter = 0;
 if($product_result) {
     $top_results = [];
     $image_srcs = [];
+    $url_paths  = [];
     while($row = $product_result->fetch_assoc()) {
         $top_results[$counter][0] = $row['name'];
         $top_results[$counter][1] = $row['stock'];
         $image_srcs[] = set_image_src($row['id']);
+        $url_paths[] = "cart_process.php?name=add_to_cart&product_id=" . $row['id'] . "&user_id=" . ($_SESSION["user_id"] ?? 0) . "&quantity=1";
         $counter++;
     }
 }
@@ -54,7 +56,6 @@ if($product_result) {
                 document.getElementById('side-panel').style.display = "none";
 
             }
-
         </script>
     </head>    
     <body>
@@ -73,7 +74,7 @@ if($product_result) {
                     <a href="logout.php">Logout</a>
                 </div>
                 <div class="menu-btn">
-                    <button  onclick="openPanel()"><span class="material-symbols-outlined">menu</span></button>  
+                    <button onclick="openPanel()"><span class="material-symbols-outlined">menu</span></button>  
                 </div>
 
             </div>
@@ -102,7 +103,9 @@ if($product_result) {
                         <img src="<?= htmlspecialchars($image_srcs[$i]) ?>" alt="Product Image">
                         <h3 style="text-align: center;"><?= htmlspecialchars($top_results[$i][0]) ?></h3>
                         <h4 style="text-align: center;">Available : <?= htmlspecialchars($top_results[$i][1]) ?></h4>
-                        <button class="buttons">Add to cart</button>
+                        <button class="buttons">
+                            <a href="<?= $url_paths[$i] ?>">Add to cart</a>
+                        </button>
                     </div>
                     <?php
                 }

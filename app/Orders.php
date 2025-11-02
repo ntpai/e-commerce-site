@@ -14,6 +14,18 @@ function fetch_orders(): array|null {
     return null;
 }
 
+function get_order_id($user_id) : int | null {
+    $db = new DBcontrol();
+    $query = "SELECT id FROM orders WHERE user_id = '$user_id' AND status = 
+    'Pending' ORDER BY order_date DESC LIMIT 1";
+    $result = $db->query($query);
+    if($result) {
+        $row = $result->fetch_assoc();
+        return $row['id'];
+    }
+    return null;
+}
+
 function get_order_by_id(int $order_id): array | null {
     $db = new DBcontrol();
     $query = "SELECT * FROM orders WHERE id = '$order_id'";
@@ -41,4 +53,15 @@ function get_order_items($order_id) {
         return $result->fetch_assoc();
     }
     return null;
+}
+
+function create_order(int $user_id, int $total_amount,string $method): int | false {
+    $db = new DBcontrol();
+    $query = "INSERT INTO orders (user_id, total_amount, method) VALUES (?, ?, ?)";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("iis", $user_id, $total_amount, $method);
+    if($stmt->execute()) {
+        return true;
+    }
+    return false;
 }
