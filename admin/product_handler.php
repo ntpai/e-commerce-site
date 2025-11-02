@@ -48,7 +48,6 @@ if (isset($_POST['update'])) {
         if (update_status($status, $id)) $successes++;
     }
 
-    // Decide overall updation status
     if ($attempted === 0) {
         // Nothing to update
         $updation_status = false;

@@ -36,6 +36,17 @@ function get_product_by_id(int $product_id) {
     return $result->fetch_assoc();
 }
 
+function get_product_name(int $product_id) {
+    $db = new DBcontrol();
+    $sql = "SELECT name FROM products WHERE id = '$product_id'";
+    $result = $db->query($sql);
+    if($result) {
+        $row = $result->fetch_assoc();
+        return $row['name'];
+    }
+    return null;
+}
+
 function get_products_by_sales() {
     $db = new DBcontrol();
     $sql = "SELECT id, name, stock, sold_count FROM products ORDER BY sold_count DESC LIMIT 3";
