@@ -10,9 +10,12 @@ function get_cart_items(int $user_id) {
         return false;
     }
     $stmt->bind_param("i", $user_id);
-    if ($stmt->execute()) {
-        $result = $stmt->get_result();
-        $stmt->close();
+    if (!$stmt->execute()) {
+        return false;
+    }
+    $result = $stmt->get_result();
+    $stmt->close();
+    if ($result) {
         return $result;
     }
     $stmt->close();
@@ -34,15 +37,8 @@ function add_item(int $user_id, int $product_id, int $quantity = 1) {
 
 function remove_item(int $user_id, int $product_id) {
     $db = new DBcontrol();
-    $sql = "DELETE FROM cart WHERE user_id = ? AND product_id = ?";
-    $stmt = $db->prepare($sql);
-    if ($stmt === false) {
-        return false;
-    }
-    $stmt->bind_param("ii", $user_id, $product_id);
-    $result = $stmt->execute();
-    $stmt->close();
-    return $result;
+    $sql = "DELETE FROM cart WHERE user_id = '$user_id' AND product_id = '$product_id'";
+    return $db->query($sql);
 }
 
 function update_item_quantity(int $user_id, int $product_id, int $new_quantity) {

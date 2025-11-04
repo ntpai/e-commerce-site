@@ -134,8 +134,9 @@ $image_src = 'data:' . $image_type . ';base64,' . $image_base64;
                 <p>Units left: <?= $stock ?></p>
                 <p>Price: <?= $price ?></p>     
                 <?php if($stock > 1): ?>
-                <form method="post">
-                    <input type="hidden" value="<?= $product_id?>" name="product_id"> 
+                <form method="post" action="cart_process.php">
+                    <input type="hidden" value="<?= $product_id?>" name="product_id">
+                    <input type="hidden" name="action" value="add_to_cart"> 
                     <label for="quantity"></label>
                     <input id="quantity" type="number" value="1" name="quantity" min="1" max="<?= $stock ?>">
                     <button class="buttons">Add to cart</button>
