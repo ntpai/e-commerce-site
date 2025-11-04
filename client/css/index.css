@@ -1,4 +1,4 @@
-@import url('color.css');
+@import url('color.css?');
 
 /*Icons and fonts*/
 .material-symbols-outlined {
@@ -74,28 +74,38 @@ a {
     display: flex;
     flex-direction: column;
 }
-
+#products-header {
+    margin-left: 40px;
+    margin-bottom: 2rem;
+}
 .products {
     margin-left: 40px;
     display: grid;
     grid-template-columns: auto auto auto auto;
+
 } 
 
 .product-card {
-    border: 1px solid black;
+    border: 1px solid var(--bg-color);
     margin: 0.5rem;
-    height: 100%;
-    width: 250px;
+    height: 75%;
+    padding: 0.5rem;
+    width: 60%;
+    transition: 0.3s ease-in-out;
+}
+.product-card * {
+    display: flex;
+    align-items: last baseline;
+    justify-content: space-evenly;
 }
 .product-card img{
     width: 90%;
-    height: 70%;
+    height: 50%;
     padding: 10px;
     object-fit: cover;
 }
 .product-card p{
     text-align: center;
-    font-size: 1.1rem;
     margin: 0.5em 0;
 }
 .product-card .buttons{
@@ -103,6 +113,11 @@ a {
     height: 2.5rem;
     display: block;
     margin: 1em auto;
+}
+.product-card:hover{
+    box-shadow: var(--box-shadow-effect);
+    transition: 0.3s;
+    transform: scale(1.03);
 }
 footer{
     width: 100%;

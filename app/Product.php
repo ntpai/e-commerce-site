@@ -29,10 +29,13 @@ function get_product_id($product_name) {
     return false;
 } 
 
-function get_product_by_id(int $product_id) {
+function get_product_by_id(int $product_id): array | null {
     $db = new DBcontrol();
     $sql = "SELECT * FROM products WHERE id = '$product_id'";
     $result = $db->query($sql);
+    if(!$result) {
+        return null;
+    }
     return $result->fetch_assoc();
 }
 
@@ -49,7 +52,7 @@ function get_product_name(int $product_id) {
 
 function get_products_by_sales() {
     $db = new DBcontrol();
-    $sql = "SELECT id, name, stock, sold_count FROM products ORDER BY sold_count DESC LIMIT 3";
+    $sql = "SELECT id, name, stock, sold_count FROM products ORDER BY sold_count DESC LIMIT 5";
     return $db->query($sql);
 }
 

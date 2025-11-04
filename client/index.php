@@ -31,7 +31,7 @@ if($product_result) {
         $top_results[$counter][0] = $row['name'];
         $top_results[$counter][1] = $row['stock'];
         $image_srcs[] = set_image_src($row['id']);
-        $url_paths[] = "cart_process.php?name=add_to_cart&product_id=" . $row['id'] . "&user_id=" . ($_SESSION["user_id"] ?? 0) . "&quantity=1";
+        $url_paths[] = "product_view.php?id=" . $row['id'];
         $counter++;
     }
 }
@@ -48,7 +48,7 @@ if($product_result) {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
         <title>Retailo</title>
-        <script src="js/cart.js">
+        <script>
             function openPanel(){
                 document.getElementById('side-panel').style.display = "block";
             }
@@ -91,9 +91,8 @@ if($product_result) {
             </div>
         </div>
         <div class="featured-products">
-        <div class="products-header">
-            <h2>Featured Products</h2>
-        </div>
+    
+        <h2 id="products-header">Featured Products</h2>
         <div class="products">
             <?php 
             if (!empty($top_results)) {
@@ -104,7 +103,7 @@ if($product_result) {
                         <h3 style="text-align: center;"><?= htmlspecialchars($top_results[$i][0]) ?></h3>
                         <h4 style="text-align: center;">Available : <?= htmlspecialchars($top_results[$i][1]) ?></h4>
                         <button class="buttons">
-                            <a href="<?= $url_paths[$i] ?>">Add to cart</a>
+                            <a href="<?= $url_paths[$i] ?>">View product</a>
                         </button>
                     </div>
                     <?php
