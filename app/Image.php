@@ -5,7 +5,7 @@ require_once 'DBcontrol.php';
 
 function get_image($product_id) {
     $db_obj = new DBcontrol();
-    $query = "SELECT * FROM image WHERE ref_id = '$product_id'";
+    $query = "SELECT image_binary FROM image WHERE ref_id = '$product_id'";
     $result = $db_obj->query($query);
     if($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
@@ -16,7 +16,8 @@ function get_image($product_id) {
 function get_image_type($product_id) {
     
     $db_obj = new DBcontrol();
-    $query = "SELECT type, image_binary FROM image WHERE image_name = '$product_id'";
+    // image records reference products using ref_id
+    $query = "SELECT type FROM image WHERE ref_id = '$product_id'";
     $result = $db_obj->query($query);
     if($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();

@@ -61,8 +61,18 @@ function get_all_products() {
     $sql = "SELECT * FROM products";
     return $db->query($sql);
 }
+function get_all_products_category() {
+    $db = new DBcontrol();
+    $sql = "SELECT id, name, stock FROM products ORDER BY category";
+    $result = $db->query($sql);
+    if(!$result) {
+        return null;
+    }
+    // return the full result set so callers can iterate over all rows
+    return $result;
+}
 
-function get_categories() {
+function get_categories(): array {
     $db = new DBcontrol();
     $sql = "SELECT DISTINCT category FROM products";
     $result = $db->query($sql);

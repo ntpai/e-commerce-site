@@ -91,6 +91,7 @@ a {
     height: 75%;
     padding: 0.5rem;
     width: 60%;
+    box-shadow: var(--box-shadow-effect);
     transition: 0.3s ease-in-out;
 }
 .product-card * {
@@ -115,8 +116,8 @@ a {
     margin: 1em auto;
 }
 .product-card:hover{
-    box-shadow: var(--box-shadow-effect);
     transition: 0.3s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
     transform: scale(1.03);
 }
 footer{
