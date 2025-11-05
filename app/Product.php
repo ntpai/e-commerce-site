@@ -85,6 +85,25 @@ function get_categories(): array {
     return $categories;
 }
 
+function search($name, $category = null) {
+    $db = new DBcontrol();
+    if ($category == null) {
+        $sql = "SELECT * FROM products WHERE name LIKE ? AND category = ?";
+        $stmt = $db->prepare($sql);
+        $like_name = '%' . $name . '%';
+        $stmt->bind_param("ss", $like_name, $category);
+    } else {
+        $sql = "SELECT * FROM products WHERE name LIKE ?";
+        $stmt = $db->prepare($sql);
+        $like_name = '%' . $name . '%';
+        $stmt->bind_param("s", $like_name);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    return $result;
+}
+
 function get_products_by_category($category) {
     $db = new DBcontrol();
     $sql = "SELECT * FROM products WHERE category = ?";

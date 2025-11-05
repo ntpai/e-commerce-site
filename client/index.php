@@ -62,9 +62,16 @@ if($product_result) {
         <nav>
             <h1>RETAILO</h1>
             <div id="menu">
+                <div>
+                    <form action="search.php" method="get">
+                        <input type="text" name="query" placeholder="search product">
+                        <input type="hidden" name="category" value="none">
+                    </form>
+                </div>
                 <div class="user-features">
                     <a href="cart.php"><span class="material-symbols-outlined">shopping_bag</span></a>
                 </div>
+
                 <div id="side-panel" class="side-panel">
                     <a href="javascript:void(0)" class="closebtn" onclick="closePanel()">&times;</a>
                     <a href="orders.php">Orders</a>
@@ -86,8 +93,8 @@ if($product_result) {
             </div>
             <div class="shop-now">
                 <h1>PREMIUM DEVELOPMENT BOARDS</h1>
-                <p>Built for Brilliance. Engineered to Endure. Uncompromising Quality</p>
-                <button class="buttons">Shop now.</button>
+                <p>Built for Brilliance. Engineered to Endure. Uncompromising Quality.</p>
+                <button class="buttons"><a href="products.php">Shop now.</a></button>
             </div>
         </div>
         <div class="featured-products">

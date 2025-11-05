@@ -65,3 +65,13 @@ function create_order(int $user_id, int $total_amount,string $method): int | fal
     }
     return false;
 }
+function add_order_item(int $order_id, int $product_id, int $quantity, float $price) {
+    $db = new DBcontrol();
+    $sql = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES(?, ?, ?, ?)";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("iiif", $order_id, $product_id, $quantity, $price);
+    if($stmt->execute()) {
+        return true;
+    }
+    return false;
+}
