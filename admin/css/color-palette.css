@@ -11,4 +11,5 @@
     --900: hsl(23, 91%, 25%);
     --950: hsl(21, 97%, 14%);
     --bg-color : hsl(0, 0%, 87%);
+    --box-shadow-effect: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

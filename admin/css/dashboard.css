@@ -1,4 +1,4 @@
-@import url('color-palette.css');
+@import url('color-palette.css?');
 /* Icons and fonts*/
 #display-card-icons{
     display: flex;
@@ -41,6 +41,7 @@ nav{
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    margin-bottom: 2rem;
 }
 nav h2 {
     margin-left: 40px;
@@ -67,21 +68,58 @@ nav h2 {
     left: 0;
     width: 0;
     height: 3px;
-    background-color: var(--800);
+    background-color: black;
     transition: width 0.3s ease;
 }
 
 .nav-links a:hover::after {
+    opacity: 0.6;
     width: 100%;
 }
 .nav-links a:hover{
-    color: var(--300);
+    color: var(--bg-color);
 }
 
 .overview {
-    display: block;
-    width: 80%;
-    background-color: var(--50);
-    margin: 20px 50px 0 50px;
+    display: flex;
+    width: 100%;
+    border-right: 1px solid var(--200);
+    margin-bottom: 3rem;
 }
 
+.product-overview, .revenue-overview {
+    width: 45%;
+    padding: 20px;
+    background-color: var(--50);
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-effect);
+}
+
+.product-overview *, .revenue-overview  *{
+    margin-bottom: 12px;
+}
+
+.product-container {
+    width: 95%;
+    display: block;
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 0 auto;    
+    background-color: var(--50);
+    box-shadow: var(--box-shadow-effect);   
+}
+
+.list-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--bg-color);
+    padding: 10px 10px;
+
+}
+
+.list-row  {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px;
+}

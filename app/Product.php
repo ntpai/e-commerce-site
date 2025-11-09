@@ -179,7 +179,7 @@ function get_inactive_products() {
 }
 function get_active_products() {
     $db = new DBcontrol();
-    $sql = "SELECT * FROM products WHERE active = 1";
+    $sql = "SELECT * FROM products WHERE status = 'Active'";
     $result = $db->query($sql);
     return $result->num_rows;
 }
