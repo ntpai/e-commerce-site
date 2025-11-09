@@ -93,3 +93,17 @@ function update_email($id, $new_email) {
     $stmt->bind_param("si", $new_email, $id);
     return $stmt->execute();
 }
+// for admin panel
+
+function fetch_all_user(){
+    $db = new DBcontrol();
+    $sql = "SELECT id, name, email, phone, address FROM users";
+    $res = $db->query($sql);
+    return $res;
+}
+function search_user($query){
+    $db = new DBcontrol();
+    $sql = "SELECT id, name, email, phone, address FROM users WHERE name LIKE '%$query%'";
+    $res = $db->query($sql);
+    return $res;
+}
