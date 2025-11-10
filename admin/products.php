@@ -50,7 +50,6 @@ function list_products(int $counter, $product_list ) {
             <span><p>'.$products_list[$i]['name'].'</p></span>
             <span><p>'.$products_list[$i]['category'].'</p></span>
             <span><p>'.$products_list[$i]['stock'].'</p></span>
-            <span><p>&#8377;'.$products_list[$i]['price'].'</p></span>
             <span><p>'.$products_list[$i]['created_at'].'</p></span>
             <span>
                 <button><a 
@@ -173,24 +172,21 @@ function list_products(int $counter, $product_list ) {
                 width: 100%;
                 height: 3rem;
                 padding: 1rem  2rem;
-                border-bottom: 1px solid hsl(0, 0%, 87%);    
+                border-bottom: 1px solid hsl(0, 0%, 87%);   
+                display: flex;
             }
             .product-row:last-child{
                 border-bottom: none;
             }
             .list-header span{
-                width: 16%; 
-                display: inline-block;
+                width: 20%;
                 font-weight: bold;
                 text-align: left;
-                padding: 0 0.4rem;
+               
             }
-
-            .product-row span{
-                width:16%; 
-                padding: 0 0.4rem;
-                height: 1.5rem;
-                display: inline-block;
+            .product-row span{ 
+                width: 20%;
+                height: auto;
                 text-align: left;
             }
             .product-row button{
@@ -240,7 +236,6 @@ function list_products(int $counter, $product_list ) {
                     <span>Name</span>
                     <span>Category</span>
                     <span>Stock</span>
-                    <span>Price</span>
                     <span>Date Added</span>
                     <span>Actions</span><!-- edit/delete -->
                 </div> 

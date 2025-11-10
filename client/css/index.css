@@ -81,16 +81,17 @@ a {
 .products {
     margin-left: 40px;
     display: grid;
-    grid-template-columns: auto auto auto auto;
-
+    grid-template-columns: repeat(5, auto);
+    gap: 0.5rem;
 } 
 
 .product-card {
     border: 1px solid var(--bg-color);
     margin: 0.5rem;
-    height: 75%;
+    width: 70%;
+    height: 80%;
     padding: 0.5rem;
-    width: 60%;
+    font-size: 1rem;
     box-shadow: var(--box-shadow-effect);
     transition: 0.3s ease-in-out;
 }
@@ -98,6 +99,7 @@ a {
     display: flex;
     align-items: last baseline;
     justify-content: space-evenly;
+    margin: 0.5rem auto;
 }
 .product-card img{
     width: 90%;
@@ -107,14 +109,16 @@ a {
 }
 .product-card p{
     text-align: center;
-    margin: 0.5em 0;
+    margin: 1rem auto;
 }
 .product-card .buttons{
     width: 80%;
     height: 2.5rem;
+    display: flex;
+    margin: 1rem auto;
     display: block;
-    margin: 1em auto;
 }
+
 .product-card:hover{
     transition: 0.3s;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
