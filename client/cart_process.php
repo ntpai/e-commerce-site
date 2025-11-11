@@ -1,54 +1,38 @@
 <?php 
+
 session_start();
+require_once "../app/Cart.php";
 
-require_once '../app/Cart.php';
-require_once '../app/Product.php';
+$user_id = $_SESSION['user_id'] ?? null;
+$product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : null;
+$action = $_POST['action'] ?? null;
 
-$action = $_POST['action'];
-$product_id = $_POST['product_id'];
-$user_id = $_SESSION['user_id'];
+$status = true;
 
-$message = "";
-$status = false;
-
-if($product_id && $action === 'add_to_cart'){
-    $product_id = intval($_GET['product_id']);
-    $quantity = intval($_GET['quantity']);
-
-    if(!$user_id || !$product_id || $quantity <= 0){
-        $message = 'error message! Invalid input.';
-        error_log($message);
-    }
-    if(get_cart_items($user_id)){
+if($action === 'add_to_cart' && $product_id ) {
+    $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
+    if(item_exits($user_id, $product_id)) {
         update_item_quantity($user_id, $product_id, $quantity);
-        $message = 'success! Item quantity updated in cart.';
-        error_log("Updated quantity of product ID: $product_id for user ID: $user_id to $quantity");
+        $message = "success! Item quantity updated in cart.";
     }
-    if(add_item($user_id, $product_id, $quantity)){
-        $message = 'success! Item added to cart.';
-        error_log($message);  $status = true;
+    elseif(add_item($user_id, $product_id, $quantity)){
+        $message = "success! Item added to cart.";
     } else {
-        $message = 'error! Failed to add item to cart.';
-        error_log($message);
+        $status = false;
+        $message = "error! Failed to add item to cart.";
     }
 }
 
 if($product_id && $action === 'remove_from_cart'){
-    $product_id = intval($_GET['product_id']);
     if(!$user_id || !$product_id){
-        $message = 'error message! Invalid input.';
-        error_log($message);
+        $message = "error message! Invalid input.";
     }
     if(remove_item($user_id, $product_id)){
         $message = "success! Item removed from cart.";
-        error_log($message); $status = true;
     } else {
+        $status = false;
         $message= "error! Failed to remove item from cart.";
-        error_log($message);
     }
-
 }
 
-$ref=$_GET['ref'] ?? 'cart';
-header("Location: ".$ref .".php?status=" . ($status ? "success" : "error") . "&message=" . urlencode($message));
-exit;
+header('Location: cart.php?message=' . urlencode($message). '&status=' . ($status ? 'success' : 'error'));

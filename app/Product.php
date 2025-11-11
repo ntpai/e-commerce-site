@@ -88,19 +88,18 @@ function get_categories(): array {
 function search($name, $category = null) {
     $db = new DBcontrol();
     if ($category == null) {
-        $sql = "SELECT * FROM products WHERE name LIKE ? AND category = ?";
-        $stmt = $db->prepare($sql);
         $like_name = '%' . $name . '%';
-        $stmt->bind_param("ss", $like_name, $category);
+        $sql = "SELECT * FROM products WHERE name LIKE '$like_name'";
+    } elseif ($name == '') {
+        $sql = "SELECT * FROM products WHERE category = '$category'";
+    } elseif($name == '' && $category == null ) {
+        $sql = "SELECT * FROM products";
     } else {
-        $sql = "SELECT * FROM products WHERE name LIKE ?";
-        $stmt = $db->prepare($sql);
         $like_name = '%' . $name . '%';
-        $stmt->bind_param("s", $like_name);
+        $like_category = '%' . $category . '%';
+        $sql = "SELECT * FROM products WHERE name LIKE '$like_name' AND category LIKE '$like_category'";
     }
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $stmt->close();
+    $result = $db->query($sql);
     return $result;
 }
 

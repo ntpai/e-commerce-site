@@ -8,10 +8,13 @@ $categories = get_categories();
 if(isset($_GET)){
     $query = trim($_GET['query'] ?? '');
     $category = trim($_GET['category'] ?? '');
-    if($category === 'none'){
+    if($category === 'none' && $query === ''){
+        $search_results = get_all_products();
+    } elseif($category === 'none'){
         $search_results = search($query, null);
+    } else {
+        $search_results = search($query, $category);
     }
-    $search_results = search($query, $category);
 }
 $counter = 0;
 ?>
@@ -51,6 +54,12 @@ $counter = 0;
                 justify-content: center;
                 gap: 10px;
             }
+            input[type="text"]{
+                padding: 10px;
+                border: 1px solid var(--text-color);
+                border-radius: 5px;
+                width: 250px;
+            }
         </style>
     </head>
     <body>
@@ -62,7 +71,7 @@ $counter = 0;
         </nav>
         <div class="search-container">
             <form method="GET">
-                <input type="text" name="query" placeholder="Search for products..." required>
+                <input type="text" name="query" placeholder="Search for products..."    >
                 <select name="category">
                     <option value="none">All Categories</option>
                     <?php foreach($categories as $category): ?>

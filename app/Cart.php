@@ -24,7 +24,7 @@ function get_cart_items(int $user_id) {
 
 function add_item(int $user_id, int $product_id, int $quantity = 1) {
     $db = new DBcontrol();
-    $sql = "INSERT INTO cart VALUES (?, ?, ?)";
+    $sql = "INSERT INTO cart(user_id, product_id, quantity) VALUES (?, ?, ?)";
     $stmt = $db->prepare($sql);
     if ($stmt === false) {
         return false;
@@ -65,4 +65,15 @@ function clear_cart(int $user_id) {
     $result = $stmt->execute();
     $stmt->close();
     return $result;
+}
+
+function item_exits($user_id, $product_id): bool {
+    $db = new DBcontrol();
+    $sql = "SELECT * FROM cart WHERE user_id = '$user_id' AND product_id = '$product_id'";
+    $result = $db->query($sql);
+    
+    if ($result && $result->num_rows > 0) {
+        return true;
+    }
+    return false;
 }

@@ -139,12 +139,11 @@ $image_src = 'data:' . $image_type . ';base64,' . $image_base64;
                     <input type="hidden" name="action" value="add_to_cart"> 
                     <label for="quantity"></label>
                     <input id="quantity" type="number" value="1" name="quantity" min="1" max="<?= $stock ?>">
-                    <button class="buttons">Add to cart</button>
+                    <button class="buttons" type="submit">Add to cart</button>
                 </form>
                 <?php else: ?>
                     <h3 style="color:red;">Out of Stock</h3>
                 <?php endif; ?>  
-
             </div>
         </div>
     </body>

@@ -22,8 +22,10 @@ nav {
 #menu form input  {
     display: flex;
     align-self: center;
-    margin: 9px 1rem 0 0;
-    padding: 4px;
+    margin: 5px 1rem 0 0;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid black;
 }
 
 .user-features a {
