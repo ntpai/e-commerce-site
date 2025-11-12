@@ -131,6 +131,18 @@ nav {
     border-radius: 4px;
     margin-top: 15px;
 }
+
+#delivery-option {
+    margin-top: 15px;
+}
+
+#delivery-option select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}   
 .checkout-btn {
     width: 100%;
     padding: 10px;
@@ -148,28 +160,4 @@ nav {
 a {
     text-decoration: none;;
     color: white;
-}
-.message {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 300px;
-    max-width: 90vw;
-    z-index: 1000;
-    padding: 0.5rem 2rem;
-    border: 1px solid black ;
-    border-radius: 8px;
-    background-color: #e6f9e6;
-    color: black;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    font-size: 1.1rem;
-    animation: fadeInOut 3s forwards;
-}
-@keyframes fadeInOut {
-    0% { opacity: 0; top: 0; }
-    10% { opacity: 1; top: 20px; }
-    90% { opacity: 1; top: 20px; }
-    100% { opacity: 0; top: 0; }
 }

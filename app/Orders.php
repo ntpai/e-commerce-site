@@ -4,12 +4,12 @@
 
 require_once 'DBcontrol.php';
 
-function fetch_orders(): array|null {
+function fetch_orders() {
     $db_obj = new DBcontrol();
-    $query = "SELECT * FROM orders ORDER BY order_date DESC";
+    $query = "SELECT * FROM orders ORDER BY order_date ASC";
     $result = $db_obj->query($query);
     if($result) {
-        return $result->fetch_assoc();
+        return $result;
     }
     return null;
 }
@@ -50,7 +50,7 @@ function get_order_items($order_id) {
     $query = "SELECT product_id, quantity, price FROM order_items WHERE order_id = '$order_id'";
     $result = $db->query($query);
     if($result) {
-        return $result->fetch_assoc();
+        return $result;
     }
     return null;
 }
@@ -69,7 +69,7 @@ function add_order_item(int $order_id, int $product_id, int $quantity, float $pr
     $db = new DBcontrol();
     $sql = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES(?, ?, ?, ?)";
     $stmt = $db->prepare($sql);
-    $stmt->bind_param("iiif", $order_id, $product_id, $quantity, $price);
+    $stmt->bind_param("iiid", $order_id, $product_id, $quantity, $price);
     if($stmt->execute()) {
         return true;
     }

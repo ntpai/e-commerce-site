@@ -8,7 +8,16 @@ require_once '../app/Product.php';
 if(isset($_POST['status'])) {
     $status = $_POST['status'];
     $order_id = $_GET['id'] ?? 0;
-    update_order_status($status, $order_id);
+    if(update_order_status($status, $order_id)) {
+        $message = urlencode("Order status updated successfully.");
+        header("Location: orders.php?message=".$message);
+        exit;
+    }
+    else {
+        $message = urlencode("Failed to update order status.");
+        header("Location: orders.php?message=".$message);
+        exit;    
+    }
 }
 
 function print_products(array $product_name) {
@@ -43,7 +52,7 @@ $order_items = get_order_items($order_id);
 $product_names = [];
 foreach($order_items as $item) {
     $product = get_product_name($item['product_id']);
-    $product_names[] = $product['name'];
+    $product_names[] = $product;
 }
 
 // to add: payment variable from payment table
@@ -111,11 +120,19 @@ $order_date = $date_format->format('H:i:s d-m-Y');
             }
             .order-details span {
                 display: flex;
-                flex-direction: row;
                 align-items: center;
                 gap: 0.5rem;
             }
-            
+            .order-details span select, 
+            .order-details span button {
+                padding: 0.4rem 0.6rem;
+                font-size: 1rem;
+                border-radius: 5px;
+                border: none;
+            }
+            .order-details span button {
+                cursor: pointer;
+            }
             h3{
                 font-weight: normal;
                 margin: 1rem 0;
@@ -151,14 +168,15 @@ $order_date = $date_format->format('H:i:s d-m-Y');
                 <h2>Order # <?= htmlspecialchars($_GET['id'] ?? ''); ?></h2>
                 <span>
                     <h3>Order status</h3>
-                    <form method="POST">
-                        <select>
-                            <option>Pending</option>
-                            <option>Processing</option>
-                            <option>Shipped</option>
-                            <option>Delivered</option>
-                            <option>Cancelled</option>
+                    <form method="post">
+                        <select name="status">
+                            <option value="Pending">Pending</option>
+                            <option value="Processing">Processing</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
                         </select>
+                        <button type="submit">Update</button>
                     </form>
                 </span>
             </div>

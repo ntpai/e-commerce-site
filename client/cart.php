@@ -72,17 +72,7 @@ $message = isset($_GET['message']) ? $_GET['message'] : null;
         <link  rel="stylesheet" href="css/cart.css?v=<?= time() ?>" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-        <script>
-            window.addEventListener('DOMContentLoaded', function() {
-                var msg = document.querySelector('.message');
-                if(msg) {
-                    setTimeout(function() {
-                        // to remove the GET params from url
-                        window.history.replaceState({}, document.title, window.location.pathname);
-                    }, 3000);
-                }
-            });
-        </script>
+
     </head>
     <body>
         <nav>
@@ -122,10 +112,18 @@ $message = isset($_GET['message']) ? $_GET['message'] : null;
                 <?php  if ($subtotal > 1000): ?>
                 <div class="free-shipping">
                     <p>Congrats, you're eligible for <b>Free Shipping</b></p>
+                    <p>Select your order delivery method</p>
+
                 </div>
                 <?php endif; ?>
                 <div>
-                    <button class="checkout-btn"><a href="order.php">Check out</a></button>
+                    <form action="create_order.php" method="post" id="delivery-option">
+                        <select>    
+                            <option value="Pickup">Store Pickup</option>
+                            <option value="Delivery">Delivery</option>
+                        </select>
+                        <button type="submit" class="checkout-btn"><a href="create_order.php">Check out</a></button>
+                        </form>
                 </div>  
             </div> 
             <?php if ($message != null && $status === 'success'): ?>

@@ -35,4 +35,4 @@ if($product_id && $action === 'remove_from_cart'){
     }
 }
 
-header('Location: cart.php?message=' . urlencode($message). '&status=' . ($status ? 'success' : 'error'));
+header('Location: products.php?message=' . urlencode($message));
