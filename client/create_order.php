@@ -136,7 +136,7 @@ clear_cart($user_id);
             <h2>Order Created Successfully!</h2>
             <p>Your order ID is: <?=  htmlspecialchars($order_id) ?></p>
             <p>Total Amount: $<?= htmlspecialchars(number_format($total_amount, 2)) ?></p>
-            <a href="orders.php">View Your Orders</a>
+            <button><a href="payment_process.php?order_id=<?= $order_id ?>">Continue with Payment</a></button>
         </div>
     </body>
 </html>
